@@ -1,4 +1,18 @@
 package com.ecom.ecom_application.dto;
 
+import com.ecom.ecom_application.domain.UserRole;
+import lombok.Builder;
+import lombok.Data;
+
+@Data
+@Builder
 public class UserResponse {
+
+    private String userId;
+    private String firstName;
+    private String lastName;
+    private String email;
+    private String phone;
+    private UserRole role;
+    private AddressDto address;
 }

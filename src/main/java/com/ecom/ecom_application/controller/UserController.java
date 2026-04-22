@@ -1,6 +1,8 @@
 package com.ecom.ecom_application.controller;
 
 import com.ecom.ecom_application.domain.User;
+import com.ecom.ecom_application.dto.UserRequest;
+import com.ecom.ecom_application.dto.UserResponse;
 import com.ecom.ecom_application.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -17,14 +19,14 @@ public class UserController {
     private final UserService userService;
 
     @GetMapping("/api/users")
-    public ResponseEntity<List<User>> getAllUsers()
+    public ResponseEntity<List<UserResponse>> getAllUsers()
     {
         
        return  ResponseEntity.ok(userService.fetchAllUsers());
     }
 
     @PostMapping("/api/users")
-    public ResponseEntity<User> createUser(@RequestBody User user)
+    public ResponseEntity<UserResponse> createUser(@RequestBody User user)
     {
         return ResponseEntity
                 .status(HttpStatus.CREATED)
@@ -32,9 +34,14 @@ public class UserController {
     }
 
     @GetMapping("/api/users/{userId}")
-    public User getAllUsers(@PathVariable Long userId)
+    public UserResponse getAllUsers(@PathVariable Long userId)
     {
         return userService.getUserbyId(userId);
+   }
+
+   @PutMapping("/api/users/{userId}")
+   public ResponseEntity<User> updateUser(@PathVariable Long userId,@RequestBody UserRequest user){
+        return ResponseEntity.ok(userService.updateUser(userId,user));
    }
 
 
