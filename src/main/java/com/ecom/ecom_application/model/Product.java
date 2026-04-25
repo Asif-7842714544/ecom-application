@@ -1,4 +1,4 @@
-package com.ecom.ecom_application.domain;
+package com.ecom.ecom_application.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -11,7 +11,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-@Entity
+@Entity(name = "product")
 @Data
 public class Product {
 
